@@ -86,12 +86,15 @@ st.markdown("""
         background: #fff;
         overflow: hidden;
         line-height: 0;
+        padding: 8px;
+        box-sizing: border-box;
     }
 
     .logo-wrap img {
         width: 100%;
         display: block;
-        object-fit: cover;
+        object-fit: contain;
+        max-height: 110px;
     }
 
     .sidebar-header {
@@ -231,8 +234,17 @@ PAGES = [
 ]
 
 with st.sidebar:
-    if logo_b64:
-        st.markdown(f'<div class="logo-wrap"><img src="data:image/jpeg;base64,{logo_b64}"></div>', unsafe_allow_html=True)
+    st.markdown("""
+    <div style="
+        width:100%;
+        padding:14px 10px;
+        text-align:center;
+        box-sizing:border-box;
+    ">
+        <span style="font-size:1.6rem;color:#ffffff;">✈</span>
+        <span style="font-size:1.3rem;font-weight:700;color:#ffffff;letter-spacing:2px;margin-right:6px;">GACA</span>
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown("""
     <div class="sidebar-header">
