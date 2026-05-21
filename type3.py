@@ -327,7 +327,7 @@ def run_type_3():
 
     set_background()
     st.markdown("<div style='margin-top: 80px;'></div>", unsafe_allow_html=True)
-    st.header("📊 معالجة Type 3 - النظام المتكامل")
+    st.header(" Type 3 ")
 
     if 'final_results_table_3' not in st.session_state:
         st.session_state.final_results_table_3 = []
@@ -337,7 +337,7 @@ def run_type_3():
         st.session_state.extra_airports_3 = []
 
     # ── [1] ملف الأوزان ──
-    st.subheader("📂 الخطوة 1: رفع ملف الأوزان المرجعي")
+    st.subheader("📂 الخطوة 1: رفع ملف الأوزان ")
     weights_file = st.file_uploader(
         "ارفع ملف الأوزان (يحتوي على: Weights | subcategory weight | main category weight)",
         type=['xlsx'], key="weights_uploader_3"
@@ -394,7 +394,7 @@ def run_type_3():
     st.divider()
 
     # ── [2] ملف Airport Data ──
-    st.subheader("📊 الخطوة 2: رفع ملف Airport Data (مرجع)")
+    st.subheader("👥 الخطوة 2: رفع ملف بيانات الركاب")
     airport_data_file = st.file_uploader(
         "ارفع ملف Airport Data — يُرفع مرة واحدة كمرجع",
         type=['xlsx', 'csv'], key="airport_data_uploader_3"
@@ -406,9 +406,9 @@ def run_type_3():
             df_airport.columns = df_airport.columns.str.strip()
             st.session_state['airport_data_3_raw'] = df_airport
             st.session_state['airport_data_3']     = process_airport_data(df_airport.copy())
-            st.success("✅ تم تحميل ومعالجة ملف Airport Data بنجاح!")
+            st.success("✅ تم بنجاح تحميل  ملف الركاب:")
         except Exception as e:
-            st.error(f"❌ خطأ في قراءة ملف Airport Data: {e}")
+            st.error(f"❌ خطأ في ملف الركاب: {e}")
             return
 
     if 'airport_data_3' not in st.session_state:
