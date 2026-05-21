@@ -423,7 +423,7 @@ def calc_multi_terminal(df1, df2, lookup_df, display_sub, display_main,
 def run_type_4():
     set_background()
     st.markdown("<div style='margin-top: 80px;'></div>", unsafe_allow_html=True)
-    st.header(" Type 4 📊 ")
+    st.header(" Type 4  ")
 
     if 'final_results_table_4' not in st.session_state: st.session_state.final_results_table_4 = []
     if 'detail_data_4' not in st.session_state: st.session_state.detail_data_4 = {}
@@ -469,10 +469,10 @@ def run_type_4():
     st.divider()
 
     # ── [2] ملف الباسنجر ──
-    st.subheader("👥 الخطوة 2: رفع ملف بيانات الباسنجر")
+    st.subheader("👥 الخطوة 2: رفع ملف بيانات الركاب")
     pas_file = st.file_uploader("ارفع ملف Airport Data", type=['xlsx','csv'], key="pas_uploader_4")
     if not pas_file:
-        st.info(" ارفع ملف الباسنجر للمتابعة💡")
+        st.info(" ارفع ملف الركاب للمتابعة💡")
         return
 
     try:
@@ -482,7 +482,7 @@ def run_type_4():
             if col in df_pas.columns: df_pas[col] = pd.to_numeric(df_pas[col], errors='coerce').fillna(0)
         st.session_state['pas_data_4'] = df_pas
     except Exception as e:
-        st.error(f"❌ خطأ في ملف الباسنجر: {e}")
+        st.error(f"❌ خطأ في ملف الركاب: {e}")
         return
 
     st.divider()
@@ -645,7 +645,7 @@ def run_type_4():
             st.markdown("**📊 Excel الكامل**")
             st.download_button("📥 تحميل Excel", data=build_excel_report(st.session_state.final_results_table_4, st.session_state.detail_data_4), file_name="Type4_Full.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", use_container_width=True)
         with dl2:
-            st.markdown("**📊 Excel بدون رسومات**")
+            st.markdown("** Excel بدون رسومات**")
             st.download_button("📥 تحميل Excel", data=build_excel_report(st.session_state.final_results_table_4), file_name="Type4_Summary.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", use_container_width=True)
         with dl3:
             st.markdown("**📈 Excel مع رسومات**")
