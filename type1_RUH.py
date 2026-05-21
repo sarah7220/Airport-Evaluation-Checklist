@@ -308,7 +308,7 @@ def build_excel_with_charts(results_table, detail_data):
 def run_type_1_RUH():
     set_background()
     st.markdown("<div style='margin-top: 80px;'></div>", unsafe_allow_html=True)
-    st.header(" Type 1 - الرياض (RUH) 📊 ")
+    st.header(" Type 1 - الرياض (RUH) ")
 
     if 'final_results_table_1_RUH' not in st.session_state:
         st.session_state.final_results_table_1_RUH = []
@@ -347,7 +347,7 @@ def run_type_1_RUH():
         st.error(f"❌ خطأ في ملف الأوزان: {e}"); return
 
     # [2] ملف الباسنجر
-    st.subheader("👥 الخطوة 2: رفع ملف بيانات الباسنجر")
+    st.subheader("👥 الخطوة 2: رفع ملف بيانات الركاب")
     pas_file = st.file_uploader("ارفع ملف Airport Data", type=['xlsx', 'csv'], key="pas_ruh")
     if not pas_file: return
 
@@ -545,7 +545,7 @@ def run_type_1_RUH():
         dl1, dl2 = st.columns(2)
 
         with dl1:
-            st.markdown("**📊 Excel بدون رسومات**")
+            st.markdown("** Excel بدون رسومات**")
             st.download_button("📥 تحميل Excel",
                 data=build_excel_report(st.session_state.final_results_table_1_RUH, st.session_state.detail_data_1_RUH),
                 file_name="Type1_RUH_Full_Report.xlsx",
