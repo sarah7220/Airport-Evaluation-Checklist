@@ -315,7 +315,7 @@ def run_type_2():
 
     set_background()
     st.markdown("<div style='margin-top: 80px;'></div>", unsafe_allow_html=True)
-    st.header("📊 معالجة Type 2 - الدمام والمدينة")
+    st.header("Type 2")
 
     if 'final_results_table_2' not in st.session_state:
         st.session_state.final_results_table_2 = []
@@ -377,7 +377,7 @@ def run_type_2():
     st.divider()
 
     # [2] ملف الباسنجر
-    st.subheader("👥 الخطوة 2: رفع ملف بيانات الباسنجر")
+    st.subheader("👥 الخطوة 2: رفع ملف بيانات الركاب")
     pas_file = st.file_uploader(
         "ارفع ملف Airport Data", type=['xlsx', 'csv'], key="pas_uploader_2"
     )
@@ -390,7 +390,7 @@ def run_type_2():
                   else pd.read_excel(pas_file))
         df_pas.columns = df_pas.columns.str.strip()
     except Exception as e:
-        st.error(f"❌ خطأ في ملف الباسنجر: {e}")
+        st.error(f"❌ خطأ في ملف الركاب: {e}")
         return
 
     # بناء قائمة المطارات (الثابتة + المضافة)
@@ -406,7 +406,7 @@ def run_type_2():
         dom_r, int_r, dom, intl, total = get_dom_int_ratios(df_pas.copy(), info['terminal'])
         pax_data[code] = {'dom_r': dom_r, 'int_r': int_r, 'dom': dom, 'intl': intl, 'total': total}
 
-    st.success("✅ تم تحميل ملف الباسنجر")
+    st.success("✅ تم تحميل ملف الركاب")
 
     summary_rows = {'المؤشر': ['DOM', 'INT', 'الإجمالي', 'نسبة DOM', 'نسبة INT']}
     for code, info in AIRPORTS.items():
