@@ -318,14 +318,14 @@ def run_type_5():
 
     st.markdown("<div style='margin-top: 80px;'></div>", unsafe_allow_html=True)
 
-    st.header("📊 Type 5 ")
+    st.header(" Type 5 ")
 
     if 'final_results_table' not in st.session_state:
         st.session_state.final_results_table = []
     if 'detail_data_5' not in st.session_state:
         st.session_state.detail_data_5 = {}
 
-    st.subheader("📂 الخطوة 1: رفع ملف الأوزان المرجعي")
+    st.subheader("📂 الخطوة 1: رفع ملف الأوزان ")
 
     weights_file = st.file_uploader(
         "ارفع ملف الأوزان (يحتوي على: Weights | subcategory weight | main category weight)",
