@@ -280,7 +280,7 @@ def build_excel_with_charts(results_table, detail_data):
 def run_type_1_JED():
     set_background()
     st.markdown("<div style='margin-top: 80px;'></div>", unsafe_allow_html=True)
-    st.header("Type 1 - جدة (JED) 📊")
+    st.header("Type 1 - جدة (JED) ")
 
     if 'final_results_table_1_JED' not in st.session_state:
         st.session_state.final_results_table_1_JED = []
@@ -323,17 +323,17 @@ def run_type_1_JED():
     st.success("✅ تم تحميل ملف الأوزان")
 
     # [2] ملف الباسنجر
-    st.subheader("👥 الخطوة 2: رفع ملف بيانات الباسنجر")
+    st.subheader("👥 الخطوة 2: رفع ملف بيانات الركاب")
     pas_file = st.file_uploader("ارفع ملف Airport Data", type=['xlsx','csv'], key="pas_jed")
     if not pas_file:
-        st.info("💡 ارفع ملف الباسنجر للمتابعة")
+        st.info("💡 ارفع ملف الركاب للمتابعة")
         return
 
     df_pas = pd.read_csv(pas_file) if pas_file.name.endswith('.csv') else pd.read_excel(pas_file)
     df_pas.columns = df_pas.columns.str.strip()
     pax = get_jed_pax(df_pas)
 
-    st.success("✅ تم تحميل ملف الباسنجر")
+    st.success("✅ تم تحميل ملف الركاب")
     cp1, cp2, cp3, cp4 = st.columns(4)
     cp1.metric("🏢 T1 DOM", f"{pax['T1_DOM']:,.0f}")
     cp2.metric("🏢 T1 INT", f"{pax['T1_INT']:,.0f}")
@@ -487,7 +487,7 @@ def run_type_1_JED():
         dl1, dl2 = st.columns(2)
 
         with dl1:
-            st.markdown("**📊 Excel بدون رسومات**")
+            st.markdown("** Excel بدون رسومات**")
             st.download_button("📥 تحميل Excel",
                 data=build_excel_report(st.session_state.final_results_table_1_JED, st.session_state.detail_data_1_JED),
                 file_name="Type1_JED_Full_Report.xlsx",
